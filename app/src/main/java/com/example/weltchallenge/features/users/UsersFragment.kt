@@ -27,17 +27,32 @@ class UsersFragment : BaseFragment<FragmentUsersBinding>(
         super.onViewCreated(view, savedInstanceState)
         setupUi()
         observe()
+        setupSearchUi()
     }
 
     private fun setupUi() {
         with(binding) {
             deviceHoldersRecyclerView.adapter = adapter
-//            deviceHoldersRecyclerView.addItemDecoration(
-//                UiUtils.getDividerIconDecoration(requireContext())
-//            )
             swipeRefreshLayout.setOnRefreshListener {
                 viewModel.searchUsers("amir")
             }
+        }
+    }
+
+    private fun setupSearchUi() {
+        binding.apply {
+            searchUsersView.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(query: String?): Boolean {
+                    query?.let {
+                        if (it.isNotEmpty()) {
+                            viewModel.searchUsers(it)
+                        }
+                    }
+                    return true
+                }
+
+                override fun onQueryTextChange(query: String?): Boolean = false
+            })
         }
     }
 

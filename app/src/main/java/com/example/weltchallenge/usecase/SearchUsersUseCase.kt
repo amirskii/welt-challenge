@@ -5,5 +5,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface SearchUsersUseCase {
 
-    suspend fun execute(searchString: String): Flow<List<User>>
+    suspend fun execute(query: String): Flow<List<User>>
 }

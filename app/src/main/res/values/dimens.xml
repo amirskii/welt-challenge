@@ -11,4 +11,5 @@
     <dimen name="margin6x">48dp</dimen>
     <dimen name="margin7x">56dp</dimen>
     <dimen name="margin8x">64dp</dimen>
+    <dimen name="search_toolbar_height">80dp</dimen>
 </resources>

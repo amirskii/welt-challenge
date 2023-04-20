@@ -16,14 +16,14 @@ class UsersViewModelImpl(
 
     override val uiState = MutableStateFlow(UsersUiState())
 
-    override fun searchUsers(searchString: String) {
+    override fun searchUsers(query: String) {
         uiState.update { state ->
             state.copy(
                 loading = true
             )
         }
         viewModelScope.launch {
-            searchUsersUseCase.execute(searchString)
+            searchUsersUseCase.execute(query)
                 .catch {
                     uiState.update { state -> state.copy(error = it.localizedMessage) }
                 }
