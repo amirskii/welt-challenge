@@ -34,7 +34,7 @@ class UsersFragment : BaseFragment<FragmentUsersBinding>(
         with(binding) {
             deviceHoldersRecyclerView.adapter = adapter
             swipeRefreshLayout.setOnRefreshListener {
-                viewModel.searchUsers("amir")
+                viewModel.repeatLastSearch()
             }
         }
     }

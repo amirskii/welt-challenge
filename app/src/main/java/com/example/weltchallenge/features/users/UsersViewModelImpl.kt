@@ -15,8 +15,10 @@ class UsersViewModelImpl(
 ) : DeviceHoldersViewModel, ViewModel() {
 
     override val uiState = MutableStateFlow(UsersUiState())
+    private var lastQuery = ""
 
     override fun searchUsers(query: String) {
+        lastQuery = query
         uiState.update { state ->
             state.copy(
                 loading = true
@@ -37,6 +39,12 @@ class UsersViewModelImpl(
                     }
                 }
                 .collect()
+        }
+    }
+
+    fun repeatLastSearch() {
+        if (lastQuery.isNotEmpty()) {
+            searchUsers(lastQuery)
         }
     }
 
