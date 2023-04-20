@@ -1,8 +1,7 @@
 package com.example.weltchallenge.data.gateway
 
 import com.example.weltchallenge.data.api.GithubApi
-import com.example.weltchallenge.data.models.User
-import com.example.weltchallenge.data.models.UserSearchDm
+import com.example.weltchallenge.models.User
 import com.example.weltchallenge.mappers.data.UserDmMapper
 
 

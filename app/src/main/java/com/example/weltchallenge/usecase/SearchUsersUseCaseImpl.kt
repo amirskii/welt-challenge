@@ -1,7 +1,7 @@
 package com.example.weltchallenge.usecase
 
 import com.example.weltchallenge.data.gateway.GithubGateway
-import com.example.weltchallenge.data.models.User
+import com.example.weltchallenge.models.User
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 

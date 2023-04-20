@@ -1,6 +1,6 @@
 package com.example.weltchallenge.features.users
 
-import com.example.weltchallenge.data.models.User
+import com.example.weltchallenge.models.User
 import kotlinx.coroutines.flow.Flow
 
 interface DeviceHoldersViewModel {

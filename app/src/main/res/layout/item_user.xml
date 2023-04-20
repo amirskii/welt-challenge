@@ -11,14 +11,12 @@
         android:id="@+id/user_image"
         android:layout_width="@dimen/avatar_size"
         android:layout_height="@dimen/avatar_size"
-        android:layout_marginStart="@dimen/margin3x"
-        android:layout_marginTop="@dimen/margin2x"
+        android:layout_marginStart="@dimen/margin2x"
+        android:layout_marginVertical="@dimen/margin2x"
         android:background="@drawable/sh_round"
-        app:layout_constraintEnd_toStartOf="@id/user_name"
-        app:layout_constraintHorizontal_bias="0"
-        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         tools:ignore="ContentDescription" />
 
     <TextView
@@ -37,49 +35,18 @@
 
     <TextView
         android:id="@+id/user_name"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin1x2"
+        android:layout_marginHorizontal="@dimen/margin2x"
         android:ellipsize="end"
         android:maxLines="1"
-        android:textStyle="bold"
         android:textColor="@color/dark_blue"
         android:textSize="17sp"
-        app:layout_constraintEnd_toStartOf="@+id/user_sex"
+        android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@id/user_image"
-        app:layout_constraintTop_toTopOf="@id/user_image"
-        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         tools:text="Savannah Nguyen" />
 
-    <TextView
-        android:id="@+id/user_sex"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin1x"
-        android:layout_marginEnd="@dimen/margin3x"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:textColor="@color/light_gray"
-        android:textSize="17sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/user_name"
-        app:layout_constraintTop_toTopOf="@id/user_image"
-        app:layout_goneMarginStart="0dp"
-        tools:text="Female" />
-
-    <TextView
-        android:id="@+id/user_phone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin1x2"
-        android:layout_marginTop="@dimen/margin1x"
-        android:layout_marginBottom="@dimen/margin2x"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:textColor="@color/dark_gray"
-        android:textSize="17sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/user_image"
-        app:layout_constraintTop_toBottomOf="@id/user_name"
-        tools:text="+49 1804 66483105" />
 </androidx.constraintlayout.widget.ConstraintLayout>

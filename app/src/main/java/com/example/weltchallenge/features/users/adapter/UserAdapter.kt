@@ -5,9 +5,10 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import com.example.weltchallenge.data.models.User
+import com.example.weltchallenge.models.User
 import com.example.weltchallenge.databinding.ItemUserBinding
 import com.example.weltchallenge.features.base.BaseViewHolder
+import com.example.weltchallenge.utils.loadRoundImage
 
 internal class UserAdapter(
     private val onItemClicked: (User) -> Unit
@@ -47,10 +48,10 @@ internal class UserAdapter(
 
                 placeholderTextView.isVisible = item.imageUrl.isEmpty()
                 placeholderTextView.text = item.imagePlaceholder
-//                userImage.loadRoundImage(item.imageUrl, onError = {
-//                    placeholderTextView.isVisible = true
-//                    placeholderTextView.text = item.imagePlaceholder
-//                })
+                userImage.loadRoundImage(item.imageUrl, onError = {
+                    placeholderTextView.isVisible = true
+                    placeholderTextView.text = item.imagePlaceholder
+                })
 
                 root.setOnClickListener {
                     onItemClicked(item)

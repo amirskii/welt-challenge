@@ -1,4 +1,4 @@
-package com.example.weltchallenge.data.models
+package com.example.weltchallenge.models
 
 data class User(
     val id: Int,

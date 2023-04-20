@@ -1,6 +1,6 @@
 package com.example.weltchallenge.mappers.data
 
-import com.example.weltchallenge.data.models.User
+import com.example.weltchallenge.models.User
 import com.example.weltchallenge.data.models.UserSearchDm
 
 class UserDmMapper {
