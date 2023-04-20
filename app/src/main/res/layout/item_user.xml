@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:foreground="?android:attr/selectableItemBackground">
+
+    <ImageView
+        android:id="@+id/user_image"
+        android:layout_width="@dimen/avatar_size"
+        android:layout_height="@dimen/avatar_size"
+        android:layout_marginStart="@dimen/margin3x"
+        android:layout_marginTop="@dimen/margin2x"
+        android:background="@drawable/sh_round"
+        app:layout_constraintEnd_toStartOf="@id/user_name"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/placeholder_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="22sp"
+        android:layout_marginBottom="2dp"
+        android:textColor="@color/light_gray"
+        app:layout_constraintBottom_toBottomOf="@+id/user_image"
+        app:layout_constraintEnd_toEndOf="@+id/user_image"
+        app:layout_constraintStart_toStartOf="@+id/user_image"
+        app:layout_constraintTop_toTopOf="@+id/user_image"
+        tools:text="SN" />
+
+    <TextView
+        android:id="@+id/user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin1x2"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textStyle="bold"
+        android:textColor="@color/dark_blue"
+        android:textSize="17sp"
+        app:layout_constraintEnd_toStartOf="@+id/user_sex"
+        app:layout_constraintStart_toEndOf="@id/user_image"
+        app:layout_constraintTop_toTopOf="@id/user_image"
+        app:layout_constrainedWidth="true"
+        tools:text="Savannah Nguyen" />
+
+    <TextView
+        android:id="@+id/user_sex"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin1x"
+        android:layout_marginEnd="@dimen/margin3x"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/light_gray"
+        android:textSize="17sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/user_name"
+        app:layout_constraintTop_toTopOf="@id/user_image"
+        app:layout_goneMarginStart="0dp"
+        tools:text="Female" />
+
+    <TextView
+        android:id="@+id/user_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin1x2"
+        android:layout_marginTop="@dimen/margin1x"
+        android:layout_marginBottom="@dimen/margin2x"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/dark_gray"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/user_image"
+        app:layout_constraintTop_toBottomOf="@id/user_name"
+        tools:text="+49 1804 66483105" />
+</androidx.constraintlayout.widget.ConstraintLayout>

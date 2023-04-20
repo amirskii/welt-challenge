@@ -1,0 +1,14 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="avatar_size">48dp</dimen>
+    <dimen name="margin1x">8dp</dimen>
+    <dimen name="margin1x2">12dp</dimen>
+    <dimen name="margin2x">16dp</dimen>
+    <dimen name="margin2x2">20dp</dimen>
+    <dimen name="margin3x">24dp</dimen>
+    <dimen name="margin4x">32dp</dimen>
+    <dimen name="margin5x">40dp</dimen>
+    <dimen name="margin6x">48dp</dimen>
+    <dimen name="margin7x">56dp</dimen>
+    <dimen name="margin8x">64dp</dimen>
+</resources>
