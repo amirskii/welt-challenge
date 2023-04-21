@@ -8,6 +8,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.example.weltchallenge.databinding.FragmentUsersBinding
 import com.example.weltchallenge.features.base.BaseFragment
 import com.example.weltchallenge.features.users.adapter.UserAdapter
+import com.example.weltchallenge.models.UserDetails
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -18,7 +19,7 @@ class UsersFragment : BaseFragment<FragmentUsersBinding>(
 
     private val adapter by lazy {
         UserAdapter {
-//            findNavController().navigate(DeviceHoldersFragmentDirections.toDetailsFragment(it.id))
+            viewModel.getUserDetails(it.login)
         }
     }
 
@@ -51,7 +52,8 @@ class UsersFragment : BaseFragment<FragmentUsersBinding>(
                     return true
                 }
 
-                override fun onQueryTextChange(query: String?): Boolean = false
+                override fun onQueryTextChange(query: String?): Boolean =
+                    false
             })
         }
     }
@@ -65,11 +67,23 @@ class UsersFragment : BaseFragment<FragmentUsersBinding>(
                     state.users?.let {
                         adapter.submitList(it)
                     }
+                    state.userDetails?.let {
+                        showUserDetails(it)
+                    }
                     if (!state.error.isNullOrBlank()) {
                         showError(state.error)
                     }
                 }
             }
+        }
+    }
+
+    private fun showUserDetails(userDetails: UserDetails) {
+        with(binding) {
+            nameTextView.text = userDetails.name
+            bioTextView.text = userDetails.bio
+            followersValueTextView.text = userDetails.followers
+            reposValueTextView.text = userDetails.publicRepos
         }
     }
 }

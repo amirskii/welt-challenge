@@ -2,6 +2,7 @@ package com.example.weltchallenge.features.users
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.weltchallenge.usecase.FetchUserDetailsUseCase
 import com.example.weltchallenge.usecase.SearchUsersUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.catch
@@ -11,11 +12,12 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class UsersViewModelImpl(
-    private val searchUsersUseCase: SearchUsersUseCase
-) : DeviceHoldersViewModel, ViewModel() {
+    private val searchUsersUseCase: SearchUsersUseCase,
+    private val fetchUserDetailsUseCase: FetchUserDetailsUseCase
+) : UsersViewModel, ViewModel() {
+    private var lastQuery = ""
 
     override val uiState = MutableStateFlow(UsersUiState())
-    private var lastQuery = ""
 
     override fun searchUsers(query: String) {
         lastQuery = query
@@ -33,6 +35,25 @@ class UsersViewModelImpl(
                     uiState.update { state ->
                         state.copy(
                             users = users,
+                            loading = false,
+                            error = null
+                        )
+                    }
+                }
+                .collect()
+        }
+    }
+
+    override fun getUserDetails(username: String) {
+        viewModelScope.launch {
+            fetchUserDetailsUseCase.execute(username)
+                .catch {
+                    uiState.update { state -> state.copy(error = it.localizedMessage) }
+                }
+                .onEach { userDetails ->
+                    uiState.update { state ->
+                        state.copy(
+                            userDetails = userDetails,
                             loading = false,
                             error = null
                         )

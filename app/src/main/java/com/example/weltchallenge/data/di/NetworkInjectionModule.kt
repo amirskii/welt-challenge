@@ -3,6 +3,7 @@ package com.example.weltchallenge.data.di
 import com.example.weltchallenge.data.api.GithubApi
 import com.example.weltchallenge.data.gateway.GithubGateway
 import com.example.weltchallenge.data.gateway.GithubRemoteGateway
+import com.example.weltchallenge.mappers.data.UserDetailsDmMapper
 import com.example.weltchallenge.mappers.data.UserDmMapper
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -14,10 +15,13 @@ object NetworkInjectionModule {
 
     val module = module {
 
-        factory<GithubGateway> { GithubRemoteGateway(
-            api = get(),
-            mapper = get()
-        ) }
+        factory<GithubGateway> {
+            GithubRemoteGateway(
+                api = get(),
+                userMapper = get(),
+                userDetailsMapper = get()
+            )
+        }
 
         factory<GsonConverterFactory> {
             GsonConverterFactory.create()
@@ -44,6 +48,7 @@ object NetworkInjectionModule {
 
         single<GithubApi> { provideGithubApiService(get()) }
         single { UserDmMapper() }
+        single { UserDetailsDmMapper() }
     }
 
     private fun provideGithubApiService(retrofit: Retrofit) =
