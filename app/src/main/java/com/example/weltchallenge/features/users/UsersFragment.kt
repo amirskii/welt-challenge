@@ -68,24 +68,36 @@ class UsersFragment : BaseFragment<FragmentUsersBinding>(
                     state.users?.let {
                         adapter.submitList(it)
                     }
-                    state.userDetails?.let {
-                        showUserDetails(it)
-                    }
+
+                    showUserDetails(state.userDetails)
+
                     if (!state.error.isNullOrBlank()) {
                         showError(state.error)
                     }
                 }
             }
         }
+
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.events.collect {
+                    if (it is UsersEvents.ErrorEvent) {
+                        showError(it.message)
+                    }
+                }
+            }
+        }
     }
 
-    private fun showUserDetails(userDetails: UserDetails) {
+    private fun showUserDetails(userDetails: UserDetails?) {
         with(binding) {
-            bottomSheet.isVisible = true
-            nameTextView.text = userDetails.name
-            bioTextView.text = userDetails.bio
-            followersValueTextView.text = userDetails.followers
-            reposValueTextView.text = userDetails.publicRepos
+            bottomSheet.isVisible = userDetails != null
+            userDetails?.let {
+                nameTextView.text = it.name
+                bioTextView.text = it.bio
+                followersValueTextView.text = it.followers
+                reposValueTextView.text = it.publicRepos
+            }
         }
     }
 }
