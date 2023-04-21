@@ -2,6 +2,7 @@ package com.example.weltchallenge.features.users
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isVisible
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -80,6 +81,7 @@ class UsersFragment : BaseFragment<FragmentUsersBinding>(
 
     private fun showUserDetails(userDetails: UserDetails) {
         with(binding) {
+            bottomSheet.isVisible = true
             nameTextView.text = userDetails.name
             bioTextView.text = userDetails.bio
             followersValueTextView.text = userDetails.followers

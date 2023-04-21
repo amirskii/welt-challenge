@@ -23,7 +23,8 @@ class UsersViewModelImpl(
         lastQuery = query
         uiState.update { state ->
             state.copy(
-                loading = true
+                loading = true,
+                userDetails = null
             )
         }
         viewModelScope.launch {
