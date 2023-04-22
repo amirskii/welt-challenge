@@ -31,14 +31,17 @@ class GithubRemoteGatewayTest : BaseViewModelTest() {
     @Test
     fun `getUserDetails should call api and mapper`() =
         runTest {
+            // given
             val gateway = initWithMocks {
                 coEvery { api.getUserDetails(any()) } returns
                         mockk()
                 every { userDetailsDmMapper.map(any()) } returns userDetails
             }
 
+            // when
             gateway.getUserDetails("username")
 
+            // expect
             coVerifySequence {
                 api.getUserDetails("username")
                 userDetailsDmMapper.map(any())
@@ -48,14 +51,17 @@ class GithubRemoteGatewayTest : BaseViewModelTest() {
     @Test
     fun `searchUser should call api and mapper`() =
         runTest {
+            // given
             val gateway = initWithMocks {
                 coEvery { api.searchUser("username") } returns
                         SearchUserResponse(listOf(), 0)
                 every { userDmMapper.mapList(any()) } returns listOf(user)
             }
 
+            // when
             gateway.searchUser("username")
 
+            // expect
             coVerifySequence {
                 api.searchUser("username")
                 userDmMapper.mapList(any())
@@ -65,15 +71,18 @@ class GithubRemoteGatewayTest : BaseViewModelTest() {
     @Test
     fun `searchUser should return list of users`() =
         runTest {
+            // given
             val gateway = initWithMocks {
                 coEvery { api.searchUser("username") } returns
                         SearchUserResponse(listOf(userDm), 1)
                 every { userDmMapper.mapList(any()) } returns listOf(user)
             }
 
-            val customers = gateway.searchUser("username")
+            // when
+            val users = gateway.searchUser("username")
 
-            customers.shouldBe(listOf(user))
+            // expect
+            users.shouldBe(listOf(user))
         }
 
     private fun initWithMocks(mockBlock: () -> Unit): GithubRemoteGateway {

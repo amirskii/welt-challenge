@@ -19,14 +19,17 @@ class FetchUserDetailsUseCaseTest : BaseViewModelTest() {
     @Test
     fun `should call gateway`() =
         runTest {
+            // given
             val interactor = initWithMocks {
                 coEvery { githubGateway.getUserDetails(any()) } returns
                         mockk()
             }
+            // when
             // .toList() works here cause data stream is finite
             interactor.execute("username")
                 .toList()
 
+            // expect
             coVerifySequence {
                 githubGateway.getUserDetails("username")
             }

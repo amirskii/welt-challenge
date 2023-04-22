@@ -18,13 +18,14 @@ class SearchUsersUseCaseTest : BaseViewModelTest() {
     @Test
     fun `should call gateway`() =
         runTest {
+            // given
             val interactor = initWithMocks {
                 coEvery { githubGateway.searchUser("username") } returns mockk()
             }
-
+            // when
             interactor.execute("username")
                 .toList()
-
+            // expect
             coVerify(exactly = 1) {
                 githubGateway.searchUser(any())
             }
