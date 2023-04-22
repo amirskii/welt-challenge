@@ -6,7 +6,7 @@ import com.example.weltchallenge.data.models.UserSearchDm
 class UserDmMapper {
 
     fun map(input: UserSearchDm): User {
-        val placeholder = "${input.login?.first()}"
+        val placeholder = "${input.login?.first()?.uppercaseChar()}"
 
         return User(
             id = input.id ?: 0,

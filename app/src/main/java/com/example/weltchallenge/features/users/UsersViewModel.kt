@@ -8,6 +8,7 @@ interface UsersViewModel {
     val uiState: Flow<UsersUiState>
     val events: Flow<UsersEvents>
     fun searchUsers(query: String)
+    fun repeatLastSearch()
     fun getUserDetails(username: String)
 }
 

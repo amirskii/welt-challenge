@@ -12,7 +12,7 @@ class GithubRemoteGateway(
     private val userMapper: UserDmMapper,
     private val userDetailsMapper: UserDetailsDmMapper
 ) : GithubGateway {
-    override suspend fun getUsers(query: String): List<User> {
+    override suspend fun searchUser(query: String): List<User> {
         return userMapper.mapList(api.searchUser(query).userItems)
     }
 

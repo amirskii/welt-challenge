@@ -36,7 +36,10 @@ class UsersViewModelImpl(
         viewModelScope.launch {
             searchUsersUseCase.execute(query)
                 .catch {
-                    uiState.update { state -> state.copy(error = it.localizedMessage) }
+                    uiState.update { state -> state.copy(
+                        error = it.message ?: "Unknown error",
+                        loading = false
+                    ) }
                 }
                 .onEach { users ->
                     uiState.update { state ->
@@ -55,7 +58,7 @@ class UsersViewModelImpl(
         viewModelScope.launch {
             fetchUserDetailsUseCase.execute(username)
                 .catch {
-                    eventsChannel.send(UsersEvents.ErrorEvent(it.localizedMessage))
+                    eventsChannel.send(UsersEvents.ErrorEvent(it.message ?: "Unknown error"))
                 }
                 .onEach { userDetails ->
                     uiState.update { state ->
@@ -70,7 +73,7 @@ class UsersViewModelImpl(
         }
     }
 
-    fun repeatLastSearch() {
+    override fun repeatLastSearch() {
         if (lastQuery.isNotEmpty()) {
             searchUsers(lastQuery)
         }

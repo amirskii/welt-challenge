@@ -15,11 +15,17 @@ Although challenge project is tiny I tried to separate business logic, presentat
 - **Data** - Network interraction and data models.
 - **Presentation** - A layer that interacts with the UI and Android framework has also own models. 
 
+## Unit-tests
+Layers covered:
+- ViewModels
+- Use cases
+- Gateway
+
 
 ## Screenshots
 
 [<img src="/screenshots/list.png" align="left" width="200" hspace="10" vspace="10">](/screenshots/list.png)
-[<img src="/screenshots/map.png" align="center" width="200" hspace="10" vspace="10">](/screenshots/map.png)
+[<img src="/screenshots/user_details.png" align="center" width="200" hspace="10" vspace="10">](/screenshots/user_details.png)
 
 ### Unit tests
 [<img src="/screenshots/tests.png" align="left" width="400" hspace="30" vspace="10">](/screenshots/tests.png)

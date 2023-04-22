@@ -11,7 +11,7 @@ class SearchUsersUseCaseImpl(
 
     override suspend fun execute(query: String): Flow<List<User>> =
         flow {
-            val customers = githubGateway.getUsers(query)
+            val customers = githubGateway.searchUser(query)
             emit(customers)
         }
 }

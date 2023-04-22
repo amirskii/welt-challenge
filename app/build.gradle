@@ -68,4 +68,5 @@ dependencies {
     testImplementation "io.kotest:kotest-assertions-core-jvm:4.0.2"
     testImplementation "androidx.navigation:navigation-testing:2.5.3"
     testImplementation "io.insert-koin:koin-test:3.3.3"
+    testImplementation 'app.cash.turbine:turbine:0.12.3'
 }
